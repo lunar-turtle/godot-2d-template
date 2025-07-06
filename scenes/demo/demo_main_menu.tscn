@@ -1,0 +1,139 @@
+[gd_scene load_steps=2 format=3 uid="uid://bulb10slow2b4"]
+
+[ext_resource type="Script" uid="uid://d3dymk15h7dot" path="res://scripts/demo/demo_main_menu.gd" id="1_ovavb"]
+
+[node name="DemoMainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ovavb")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "main menu"
+
+[node name="PlayDemoButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Demo"
+
+[node name="PlayMultiplayerDemoButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -92.0
+offset_top = 36.0
+offset_right = 92.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Play Multiplayer Demo"
+
+[node name="MultiplayerMenu" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(800, 500)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.230315, 0.230315, 0.230315, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MultiplayerMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NavBarContainer" type="HBoxContainer" parent="MultiplayerMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 20)
+layout_mode = 2
+
+[node name="HideMultiplayerMenuButton" type="Button" parent="MultiplayerMenu/VBoxContainer/NavBarContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+text = "X"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MultiplayerMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HostVBox" type="VBoxContainer" parent="MultiplayerMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HostLabel" type="Label" parent="MultiplayerMenu/VBoxContainer/HBoxContainer/HostVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Host Game"
+
+[node name="HostGameButton" type="Button" parent="MultiplayerMenu/VBoxContainer/HBoxContainer/HostVBox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "Host a Game"
+
+[node name="ColorRect" type="ColorRect" parent="MultiplayerMenu/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(4, 0)
+layout_mode = 2
+
+[node name="JoinVbox" type="VBoxContainer" parent="MultiplayerMenu/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="JoinLabel" type="Label" parent="MultiplayerMenu/VBoxContainer/HBoxContainer/JoinVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Join Game"
+
+[node name="IpTextInput" type="TextEdit" parent="MultiplayerMenu/VBoxContainer/HBoxContainer/JoinVbox"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+text = "127.0.0.1"
+placeholder_text = "Ip Address"
+
+[node name="JoinGameButton" type="Button" parent="MultiplayerMenu/VBoxContainer/HBoxContainer/JoinVbox"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 2
+text = "Join Game"
+
+[connection signal="pressed" from="PlayDemoButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PlayMultiplayerDemoButton" to="." method="_on_play_multiplayer_demo_button_pressed"]
+[connection signal="pressed" from="MultiplayerMenu/VBoxContainer/NavBarContainer/HideMultiplayerMenuButton" to="." method="_on_hide_multiplayer_menu_button_pressed"]
+[connection signal="pressed" from="MultiplayerMenu/VBoxContainer/HBoxContainer/HostVBox/HostGameButton" to="." method="_on_host_game_button_pressed"]
+[connection signal="pressed" from="MultiplayerMenu/VBoxContainer/HBoxContainer/JoinVbox/JoinGameButton" to="." method="_on_join_game_button_pressed"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3jbm1y8ljtfy"]
+
+[ext_resource type="Script" uid="uid://dl6s8rcn8qibo" path="res://scripts/demo/demo_world_multiplayer.gd" id="1_h0n2m"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gghv4"]
+properties/0/path = NodePath("CanvasLayer/ConnectedPlayersText/ConnectedPlayersAmt:text")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+
+[node name="DemoMultiplayer" type="Node2D"]
+script = ExtResource("1_h0n2m")
+
+[node name="ConnectedPlayers" type="Node2D" parent="."]
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="ConnectedPlayers"]
+_spawnable_scenes = PackedStringArray("uid://df5h5tcitvk86")
+spawn_path = NodePath("..")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ConnectedPlayersText" type="HBoxContainer" parent="CanvasLayer"]
+offset_left = 13.0
+offset_top = 15.0
+offset_right = 179.0
+offset_bottom = 55.0
+
+[node name="ConnectedPlayers" type="Label" parent="CanvasLayer/ConnectedPlayersText"]
+layout_mode = 2
+size_flags_horizontal = 6
+text = "Connected Players: "
+
+[node name="ConnectedPlayersAmt" type="Label" parent="CanvasLayer/ConnectedPlayersText"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_gghv4")

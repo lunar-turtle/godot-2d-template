@@ -1,4 +1,4 @@
-# logging_manager.gd
+# logger.gd
 extends Node
 
 enum LogLevel {DEBUG, INFO, WARNING, ERROR}
